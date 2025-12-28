@@ -1,0 +1,18 @@
+export const enum ChatHubMethods {
+  UPDATE_SHOWING_PHONE_NUMBER = "UpdateShowingPhoneNumber",
+  UPDATE_SHOWING_DESCRIPTION = "UpdateShowingDescription",
+  UPDATE_SHOWING_ACTIVITY_STATUS = "UpdateShowingActivityStatus",
+  UPDATE_SHOWING_AVATAR = "UpdateShowingAvatar",
+  UPDATE_SHOWING_ORIGINAL_TEXT = "UpdateShowingOriginalText",
+  UPDATE_SHOWING_TRANSLATED_DOCS = "UpdateTranslatedDocs",
+  UPDATE_DARK_MODE = "UpdateDarkMode",
+  UPDATE_UI_SETTINGS = "UpdateUiSettings",
+  UPDATE_USER_NAME = "UpdateUserName",
+  UPDATE_ALIAS = "UpdateAlias",
+  UPDATE_EMAIL = "UpdateEmail",
+  UPDATE_PHONE_NUMBER = "UpdatePhoneNumber",
+  UPDATE_DESCRIPTION = "UpdateDescription",
+  UPDATE_MESSAGE = "UpdateMessage",
+  SEND_MESSAGE = "SendMessage",
+  DELETE_MESSAGE = "DeleteMessage",
+}

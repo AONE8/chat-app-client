@@ -1,0 +1,17 @@
+export const enum ChatHubListeningMethods {
+  UPDATE_UI_SETTINGS = "UpdateUiSettings",
+  DELETE_USER = "DeleteUser",
+  RECEIVE_MESSAGE = "ReceiveMessage",
+  RECEIVE_NEW_GROUP = "ReceiveNewGroup",
+  RECEIVE_UPDATING_RESULT = "ReceiveUpdatingResult",
+  RECEIVE_DELETING_RESULT = "ReceiveDeletingResult",
+  RECEIVE_ADDED_USERS_IN_GROUP = "ReceiveAddedUsersInGroup",
+  REMOVE_USERS_FROM_GROUP = "RemoveUsersFromGroup",
+  REMOVE_USER_FROM_GROUP = "RemoveUserFromGroup",
+  REMOVE_FROM_CHAT_AND_GROUP = "RemoveFromChatAndGroup",
+  RECEIVE_UPDATED_ADMIN_LIST = "ReceiveUpdatedAdminList",
+  RECEIVE_UPDATED_GROUP_DATA = "ReceiveUpdatedGroupData",
+  GET_USER_ACTIVE_STATUS = "GetUserActiveStatus",
+  UPDATE_CHAT_LIST_BOX = "UpdateChatListBox",
+  DELETE_GROUP = "DeleteGroup",
+}
