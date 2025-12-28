@@ -1,7 +1,6 @@
 import store from "@store";
 import { restHandlerAction } from "@lib/restHandlerAction";
 import { restHandlerFunction } from "@lib/restHandlerFunction";
-import { returnAuthString } from "@/lib/returnAuthString";
 
 const { VITE_USER_BACKEND_URL, VITE_DELETE_USER_URL, VITE_USER_SEARCH_URL } =
   import.meta.env;
@@ -9,7 +8,7 @@ const { VITE_USER_BACKEND_URL, VITE_DELETE_USER_URL, VITE_USER_SEARCH_URL } =
 export const getUserData = async ({ signal }: { signal: AbortSignal }) => {
   const token = store.getState().auth.token;
 
-  return restHandlerFunction("https://localhost:7261/Api/User", {
+  return restHandlerFunction(VITE_USER_BACKEND_URL, {
     signal,
     authToken: token?.raw || "",
     defaultErrorMessage: "Failed to get user data",
