@@ -39,7 +39,7 @@ const OwnChatBubble: FC<OwnChatBubbleProps> = ({
         className="chat-bubble chat-bubble-accent"
         onContextMenu={handleRightClick}
       >
-        <div className="z-50 absolute top-0 left-0 2xl:-right-3 -translate-y-1/2 -translate-x-[110%] 2xl:translate-x-[100%]">
+        <div className="z-50 absolute top-0 right-0 2xl:-right-3 -translate-y-1/2 -translate-x-[25%] 2xl:translate-x-[100%]">
           {open && (
             <CmOnOwnMessage
               id={id}

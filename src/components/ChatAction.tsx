@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SendHorizontal, Smile } from "lucide-react";
@@ -21,6 +21,8 @@ const ChatAction: FC<ChatActionProps> = ({
 }) => {
   const { chatId } = useParams<{ chatId: string }>();
   const [message, setMessage] = useState("");
+  const [rows, setRows] = useState(1);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const dispatch = useDispatch<AppDispatch>();
   const isPending = useSelector((state: RootState) => state.chatHub.isPending);
   const lang = useSelector((state: RootState) => state.user.profile?.language);
@@ -31,6 +33,7 @@ const ChatAction: FC<ChatActionProps> = ({
   useEffect(() => {
     if (editingMessage) {
       setMessage(editingMessage.content);
+      setRows(Math.max(1, editingMessage.content.split("\n").length));
     }
   }, [editingMessage]);
 
@@ -51,6 +54,10 @@ const ChatAction: FC<ChatActionProps> = ({
     }
 
     setMessage("");
+    setRows(1);
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+    }
   };
 
   const handleEmojiClick = (emojiData: EmojiClickData) => {
@@ -77,6 +84,7 @@ const ChatAction: FC<ChatActionProps> = ({
       )}
 
       <textarea
+        ref={textareaRef}
         placeholder={messagePlaceholder[lang ?? "en"]}
         className="w-full focus:outline-none resize-none h-auto"
         name="message"
@@ -88,18 +96,22 @@ const ChatAction: FC<ChatActionProps> = ({
           if (message.length < MAX_MESSAGE_LENGTH) setMessage(value);
           else setMessage(value.slice(0, MAX_MESSAGE_LENGTH));
         }}
-        rows={1}
+        rows={rows}
         onInput={(e) => {
           const textarea = e.target as HTMLTextAreaElement;
+          setRows(Math.max(1, textarea.value.split("\n").length));
           textarea.style.height = "auto";
           textarea.style.height = `${textarea.scrollHeight}px`;
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
-            const form = e.currentTarget.form;
-            if (form) form.requestSubmit();
-          }
+            const textarea = e.currentTarget as HTMLTextAreaElement;
+            const form = textarea.form;
+            if (form) {
+              form.requestSubmit();
+            }
+        }
         }}
       ></textarea>
 

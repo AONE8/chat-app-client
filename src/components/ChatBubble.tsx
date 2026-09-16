@@ -66,7 +66,7 @@ const ChatBubble: FC<ChatBubbleProps> = ({
       )}
 
       <div className="chat-bubble" onContextMenu={handleRightClick}>
-        <div className="z-50 absolute top-0 right-0 translate-x-[110%]">
+        <div className="z-50 absolute top-0 left-0 translate-x-[25%]">
           {open && (
             <CMOnOtherMessage content={children as string} setOpen={setOpen} />
           )}

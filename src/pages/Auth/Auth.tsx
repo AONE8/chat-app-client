@@ -58,8 +58,8 @@ const Auth = () => {
 
       if (result.success) {
         const validatedFormData = toFormData(result.data);
-
-        await dispatch(signupAction(validatedFormData));
+        
+       await dispatch(signupAction(validatedFormData));
       }
     }
 

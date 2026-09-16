@@ -1,6 +1,8 @@
 {
   "files": [],
   "compilerOptions": {
+    "declaration": false,
+    "noEmit": true,
     "types": ["node"],
     "baseUrl": "./",
     "paths": {
